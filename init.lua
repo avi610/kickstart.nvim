@@ -570,6 +570,10 @@ do
 
   -- Shortcut for searching your Neovim configuration files
   vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+
+  -- Terminal Trigger Commands
+  vim.keymap.set('n', '<leader>tb', ':botright split | term<CR>', {silent = true, desc = '[T]erminal [B]ottom'})
+  vim.keymap.set('n', '<leader>tr', 'vsplit | term<CR>', {silent = true, desc = '[T]erminal [Right'})
 end
 
 -- ============================================================
@@ -954,7 +958,7 @@ do
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.debug'
+  -- require 'kickstart.plugins.debug'
   -- require 'kickstart.plugins.indent_line'
   require 'kickstart.plugins.lint'
   require 'kickstart.plugins.autopairs'
