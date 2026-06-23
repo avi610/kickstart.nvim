@@ -26,7 +26,7 @@ What is Kickstart?
 
   Kickstart.nvim is a starting point for your own configuration.
     The goal is that you can read every line of code, top-to-bottom, understand
-    what your configuration is doing, and modify it to suit your needs.
+    what your configuration is doing, and modify it to suit your needs
 
     Once you've done that, you can start exploring, configuring and tinkering to
     make Neovim your own! That might mean leaving Kickstart just the way it is for a while
@@ -572,8 +572,10 @@ do
   vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
 
   -- Terminal Trigger Commands
-  vim.keymap.set('n', '<leader>tb', ':botright split | term<CR>', {silent = true, desc = '[T]erminal [B]ottom'})
-  vim.keymap.set('n', '<leader>tr', 'vsplit | term<CR>', {silent = true, desc = '[T]erminal [Right'})
+  vim.keymap.set('n', '<leader>tb', '<Cmd>ToggleTerm direction=horizontal<CR>', {silent = true, desc = '[T]erminal [B]ottom'})
+  vim.keymap.set('n', '<leader>tr', '<Cmd>ToggleTerm direction=vertical<CR>', {silent = true, desc = '[T]erminal [R]right'})
+  vim.keymap.set('n', '<leader>tf', '<Cmd>ToggleTerm direction=float<CR>', {silent = true, desc = '[T]erminal [F]loat'})
+
 end
 
 -- ============================================================
@@ -685,6 +687,7 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
     clangd = {},
+    zls = {},
     -- gopls = {},
     -- pyright = {},
     -- rust_analyzer = {},
@@ -968,7 +971,7 @@ do
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
